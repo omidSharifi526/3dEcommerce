@@ -13,7 +13,18 @@ const page = () => {
   return (
     <div>{
 
-          role==='admin'? <AdminPanel/> :<UserPanel/>
+          role==='admin'? 
+          <AdminPanel>
+           <h1  className='mt-52'   >
+           adminPanel
+           </h1>
+          </AdminPanel>
+          :
+          <UserPanel>
+           <h1  className='mt-52'   >
+           adminPanel
+           </h1>
+          </UserPanel>
 
       }</div>
   )

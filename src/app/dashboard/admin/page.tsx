@@ -1,6 +1,6 @@
 "use client"
 import * as React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import { styled, useTheme, Theme, CSSObject, useColorScheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -20,6 +20,10 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Link from 'next/link';
+import {Select,MenuItem} from '@mui/material';
+import ToggleMode from '@/components/System/ToggleMode/ToggleMode';
+import { usePathname } from 'next/navigation';
+
 
 const drawerWidth = 240;
 
@@ -80,6 +84,8 @@ const AppBar = styled(MuiAppBar, {
   ],
 }));
 
+
+
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme }) => ({
     width: drawerWidth,
@@ -105,9 +111,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({children}:any) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -125,7 +134,7 @@ export default function MiniDrawer() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar sx={{width:'100%',display:'flex',justifyContent:'space-between'}}  >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -141,11 +150,15 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            خوش آمدی مدیر عزیز
+            ادمین خوش آمدید
           </Typography>
+          <ToggleMode/>
         </Toolbar>
+        
+       
       </AppBar>
       <Drawer variant="permanent" open={open}>
+
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -153,7 +166,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={[
@@ -201,7 +214,19 @@ export default function MiniDrawer() {
                 />
               </ListItemButton>
             </ListItem>
-          ))}
+          ))} */}
+             <List>
+          <ListItem>
+            <ListItemButton component={Link} href="/dashboard/customers">
+              <ListItemText primary="مشتریان" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton component={Link} href="/dashboard/orders">
+              <ListItemText primary="سفارشات" />
+            </ListItemButton>
+          </ListItem>
+        </List>
         </List>
         <Divider />
         <List>
@@ -260,11 +285,12 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
        
-       <Typography>
-        admin Panel
-       </Typography>
+       
+     {
+      children
+     }
+
        
       </Box>
     </Box>

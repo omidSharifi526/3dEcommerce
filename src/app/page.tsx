@@ -1,5 +1,4 @@
-// import Note from "../model/Note";
-// import User from "../model/User";
+
 import Product from "../model/Product";
 import User from "../model/User";
 import Order from "../model/Order";
@@ -34,20 +33,6 @@ export default async function Home() {
   }
 
   return (
-    // <main className="m-10 space-y-5">
-
-
-
-    //   <form action={newProduct}>
-
-    //     <button
-    //       type="submit"
-    //       className="p-3 bg-yellow-400 font-bold hover:bg-orange-500 hover:text-white"
-    //     >
-    //       addNewProduct
-    //     </button>
-    //   </form>
-    // </main>
 
     <Box
     sx={{ display: 'flex',
@@ -57,6 +42,7 @@ export default async function Home() {
          width:'100% !important',
          px:'20px'}}
   >
+
   <Box>
   <Typography variant="h6" gutterBottom>
       Welcome to Our Website
@@ -70,12 +56,13 @@ export default async function Home() {
         </Button>
       </Link>
 
-      <Link href="auth//signup">
+      <Link href="auth/signup">
         <Button variant="outlined" color="secondary" size="large">
           Sign Up
         </Button>
       </Link>
     </div>
+
   </Box>
   );
 }
