@@ -5,10 +5,11 @@ import { Container, TextField, Button, Typography, Box, Avatar, CssBaseline } fr
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const router = useRouter();
 
 
   const onSubmit = async({email,password}:any) => {
@@ -21,13 +22,13 @@ export default function Login() {
     if (res.ok) {
       const { token } = await res.json();
       localStorage.setItem('token', token); // ذخیره توکن
-      alert('خوش آمدید!');
-      window.location.href = '/dashboard';
-      // می‌توانید به صفحه دیگری هدایت کنید
+    router.push('/dashboard/overview');
+      
     } else {
       alert('Invalid credentials');
     }
   };
+
 
 
 

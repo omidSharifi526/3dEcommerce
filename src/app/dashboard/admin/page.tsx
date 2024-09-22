@@ -217,12 +217,12 @@ export default function MiniDrawer({children}:any) {
           ))} */}
              <List>
           <ListItem>
-            <ListItemButton component={Link} href="/dashboard/customers">
+            <ListItemButton component={Link} href="/dashboard/customer">
               <ListItemText primary="مشتریان" />
             </ListItemButton>
           </ListItem>
           <ListItem>
-            <ListItemButton component={Link} href="/dashboard/orders">
+            <ListItemButton component={Link} href="/dashboard/product">
               <ListItemText primary="سفارشات" />
             </ListItemButton>
           </ListItem>
