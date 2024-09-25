@@ -1,6 +1,8 @@
 // src/app/auth/signup/page.tsx
 'use client';
 import { useState } from 'react';
+import bcrypt from 'bcryptjs';
+
 
 export default function SignUp() {
   const [email, setEmail] = useState<any>('');
@@ -8,11 +10,11 @@ export default function SignUp() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    const hashedPassword = await bcrypt.hash(password, 10);
     const res = await fetch('/api/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password:hashedPassword }),
     });
 
     if (res.ok) {

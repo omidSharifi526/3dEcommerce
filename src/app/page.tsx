@@ -6,17 +6,13 @@ import Customer from "../model/Customer";
 import Category from "../model/Category";
 import dbConnect from '../dbConnect';
 import Link from 'next/link';
-// import {Box} from '@mui/material'
-// import {connectToMongoDB} from '../dbConnect'
 import { Box, Button, Container, Typography } from '@mui/material';
-import { Padding } from "@mui/icons-material";
-
 export default async function Home() {
   await dbConnect()
   const products = await Product.find();
   const users = await User.find();
   const orders = await Order.find();
-  const customers = await Customer.find()
+  
   const categorys = await Category.find();
 
 
@@ -40,25 +36,26 @@ export default async function Home() {
          justifyContent: 'space-between',
          height: '10vh',
          width:'100% !important',
+         fontFamily:"iranSans",
          px:'20px'}}
   >
 
   <Box>
   <Typography variant="h6" gutterBottom>
-      Welcome to Our Website
+       به فروشگاه آزمایشی ما خوش آمدید
     </Typography>
   </Box>
     
     <div style={{ display: 'flex', gap: '20px' }}>
       <Link href="auth/login">
         <Button variant="contained" color="primary" size="large">
-          Login
+          ورود
         </Button>
       </Link>
 
       <Link href="auth/signup">
         <Button variant="outlined" color="secondary" size="large">
-          Sign Up
+         ثبت نام
         </Button>
       </Link>
     </div>

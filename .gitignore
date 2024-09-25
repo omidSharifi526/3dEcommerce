@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/fonts/IRANSansWeb_Black.ttf
+public/fonts/IRANSansWeb_Bold.ttf
+public/fonts/IRANSansWeb_Light.ttf
+public/fonts/IRANSansWeb_Medium.ttf
+public/fonts/IRANSansWeb_UltraLight.ttf
+public/fonts/IRANSansWeb.ttf
+public/fonts/YekanBakhFaNum-Regular.ttf
+src/env.js
+.env

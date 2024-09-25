@@ -6,7 +6,6 @@ import User from '../../../../model/User';
 export async function POST(req) {
   await dbConnect();
   const { email, password } = await req.json();
-
   // بررسی وجود کاربر
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -14,11 +13,12 @@ export async function POST(req) {
   }
 
   // هش کردن رمز عبور
-  
+ 
 
   // ایجاد کاربر جدید
-  const newUser = new User({ email, password: password  });
+  const newUser = new User({ email, password   });
   await newUser.save();
 
   return new Response('User created', { status: 201 });
+
 }

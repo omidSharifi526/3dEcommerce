@@ -23,6 +23,12 @@ import Link from 'next/link';
 import {Select,MenuItem} from '@mui/material';
 import ToggleMode from '@/components/System/ToggleMode/ToggleMode';
 import { usePathname } from 'next/navigation';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 
 const drawerWidth = 240;
@@ -149,7 +155,7 @@ export default function MiniDrawer({children}:any) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="caption" noWrap component="div">
             ادمین خوش آمدید
           </Typography>
           <ToggleMode/>
@@ -166,13 +172,25 @@ export default function MiniDrawer({children}:any) {
         </DrawerHeader>
         <Divider />
         <List>
-          {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          
+          {[{label:'دشبورد',url:'/dashboard/overview'},
+          {label:'مشتری',url:'/dashboard/customers'},
+          {label:'محصولات',url:'/dashboard/products'},
+          {label:'خدمات',url:'/dashboard/services'},
+          {label:'تنظیمات',url:'/dashboard/setting'},
+          {label:'خروج',url:'/'}
+
+
+        
+        ].map((item:any, index:number) => (
+            <ListItem key={index} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+               component={Link} href={item?.url}
                 sx={[
                   {
                     minHeight: 48,
                     px: 2.5,
+                    fontSize:'10px !important'
                   },
                   open
                     ? {
@@ -197,11 +215,20 @@ export default function MiniDrawer({children}:any) {
                           mr: 'auto',
                         },
                   ]}
+
+                  // ExitToAppIcon
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index === 0 ? <DashboardIcon/>:
+                  index===1?<AssignmentIndIcon/>:
+                  index===2?<ShoppingBasketIcon/>:
+                  index===3?<HomeRepairServiceIcon/>:
+                  index===4?<SettingsIcon/>:
+                  index===5?<ExitToAppIcon/>:
+                  ''}
                 </ListItemIcon>
                 <ListItemText
-                  primary={text}
+                  
+                  primary={item?.label}
                   sx={[
                     open
                       ? {
@@ -211,25 +238,21 @@ export default function MiniDrawer({children}:any) {
                           opacity: 0,
                         },
                   ]}
+                 
                 />
+                
               </ListItemButton>
+                {
+                  index===3? <Divider />:''
+                }
             </ListItem>
-          ))} */}
+          ))}
              <List>
-          <ListItem>
-            <ListItemButton component={Link} href="/dashboard/customer">
-              <ListItemText primary="مشتریان" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem>
-            <ListItemButton component={Link} href="/dashboard/product">
-              <ListItemText primary="سفارشات" />
-            </ListItemButton>
-          </ListItem>
+ 
         </List>
         </List>
-        <Divider />
-        <List>
+       
+        {/* <List>
           {['All mail', 'Trash', 'خروج'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
@@ -282,7 +305,7 @@ export default function MiniDrawer({children}:any) {
     
             </ListItem>
           ))}
-        </List>
+        </List> */}
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
        

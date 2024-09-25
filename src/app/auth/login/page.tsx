@@ -6,22 +6,28 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import bcrypt from 'bcryptjs';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const router = useRouter();
 
 
+
+
   const onSubmit = async({email,password}:any) => {
+
     const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email,password }),
+      body: JSON.stringify({ email,password}),
     });
 
     if (res.ok) {
       const { token } = await res.json();
-      localStorage.setItem('token', token); // ذخیره توکن
+
+      localStorage.setItem('token', token); 
+      // ذخیره توکن
     router.push('/dashboard/overview');
       
     } else {
@@ -48,15 +54,15 @@ export default function Login() {
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Login
+        اطلاعات مورد نظر را وارد کنید
       </Typography>
       <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           fullWidth
           id="email"
-          label="Email Address"
-          name='email'
+          label="ایمیل"
+          // name='email'
           autoComplete="email"
           autoFocus
           {...register('email', { required: 'Email is required' })}
@@ -66,8 +72,8 @@ export default function Login() {
         <TextField
           margin="normal"
           fullWidth
-          name="password"
-          label="Password"
+          // name="password"
+          label="رمز عبور"
           type="password"
           id="password"
           autoComplete="current-password"
@@ -82,7 +88,7 @@ export default function Login() {
           color="primary"
           sx={{ mt: 3, mb: 2 }}
         >
-          Sign In
+          ورود 
         </Button>
       </Box>
     </Box>

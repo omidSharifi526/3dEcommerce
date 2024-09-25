@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        iransans: ['IranSans', 'sans-serif'], // نام فونت
+      },
+    
     },
   },
   plugins: [  require('tailwindcss-rtl')],
