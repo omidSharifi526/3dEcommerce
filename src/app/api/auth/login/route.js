@@ -4,7 +4,8 @@ import User from '../../../../model/User' // مسیر مدل کاربر شما
 import bcrypt from 'bcryptjs';
 import dbConnect from '../../../../dbConnect';
 import jwt from 'jsonwebtoken';
-import {JWT_SECRET} from '../../../../env'
+import {JWT_SECRET} from '../../../../env';
+
 
 
 export async function POST(req) {
@@ -27,7 +28,7 @@ export async function POST(req) {
     const token = jwt.sign(
       { userId: user._id, email: user.email }, 
       JWT_SECRET, 
-      { expiresIn: '1h' }
+      { expiresIn: '1h', }
     );
 
     // اگر رمز درست بود، عملیات لاگین موفق انجام می‌شود

@@ -6,7 +6,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import bcrypt from 'bcryptjs';
+import { setCookie } from 'cookies-next';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -22,13 +22,18 @@ export default function Login() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email,password}),
     });
+    const {data} = await res.json();
+    console.log(data)
 
-    if (res.ok) {
-      const { token } = await res.json();
-
-      localStorage.setItem('token', token); 
-      // ذخیره توکن
+    if (data) {
+      const { token } = data
+     console.log(token)
+      if (token) {
+        // ذخیره JWT در کوکی
+        setCookie('jwt', token);
     router.push('/dashboard/overview');
+
+      }
       
     } else {
       alert('Invalid credentials');

@@ -19,10 +19,8 @@ const DataGrid = ({rows}:any) => {
     { field: 'email', headerName: 'ایمیل', width: 50 },
     { field: 'phoneNumber', headerName: 'شماره تماس', width: 150 },
   ];
-  return (
-    <Box sx={{padding:'50px'}}  >
-      <MainDataGrid   rows={rows} columns={columns}   />
-    </Box>
+  return (<MainDataGrid   rows={rows} columns={columns}   />
+  
   )
 }
 
