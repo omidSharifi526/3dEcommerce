@@ -3,6 +3,7 @@
 import { useState,useEffect } from 'react';
 import { Container, TextField, Button, Typography, Box, Avatar, CssBaseline } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
@@ -26,11 +27,13 @@ export default function Login() {
     console.log(data)
 
     if (data) {
-      const { token } = data
-     console.log(token)
+      const { token,user } = data;
+      let{role}=user;
+     console.log(data)
       if (token) {
         // ذخیره JWT در کوکی
         setCookie('jwt', token);
+        setCookie('role',role)
     router.push('/dashboard/overview');
 
       }

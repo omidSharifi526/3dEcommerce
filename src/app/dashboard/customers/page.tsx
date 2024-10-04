@@ -35,7 +35,9 @@ const page =   () => {
     let{mode}=customerModuleState;
     switch (mode) {
       case 'add':
-        return  <AddCustomer/>
+        return <>
+        <AddCustomer/>
+        </>
 
         break;
     
@@ -53,7 +55,9 @@ const page =   () => {
         updateModuleState={setCustomerModuleState}  
          >
           {
-           customerModuleState.modal  &&  <ModalLayout  
+            customerModuleState.modal && <ModalLayout  
+            title='مشتری'
+            mode={customerModuleState?.mode}
             open={customerModuleState?.modal} 
             setOpen={setCustomerModuleState}   >
               {
@@ -61,8 +65,8 @@ const page =   () => {
               }
             </ModalLayout>
           }
-          <DataGrid rows={[]}  />
-          
+          <DataGrid rows={data}  />
+
         </ModuleLayout>
   )
 }

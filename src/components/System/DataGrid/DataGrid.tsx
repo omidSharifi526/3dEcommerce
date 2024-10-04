@@ -1,6 +1,9 @@
 import React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
 import { DataGrid as MainDataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+// import { faIR as faIR } from '@mui/material/locale';
+import { faIR } from '@mui/x-data-grid/locales';
 
 const DataGrid = ({rows}:any) => {
   // const rows: GridRowsProp = [
@@ -19,7 +22,10 @@ const DataGrid = ({rows}:any) => {
     { field: 'email', headerName: 'ایمیل', width: 50 },
     { field: 'phoneNumber', headerName: 'شماره تماس', width: 150 },
   ];
-  return (<MainDataGrid   rows={rows} columns={columns}   />
+  return (<MainDataGrid 
+    // localeText={faIR.components.MuiDataGrid.defaultProps.localeText}
+    localeText={faIR.components.MuiDataGrid.defaultProps.localeText} 
+    rows={rows} columns={columns} hideFooter  />
   
   )
 }

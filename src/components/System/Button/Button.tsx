@@ -9,9 +9,10 @@ const Button = (props:any) => {
         onClick={()=>{
             onClick((prev:any)=>({...prev,modal:true,mode:'add'}))
         }}
-        sx={{borderRadius:'9px',boxShadow:'20px'}} 
+        sx={{borderRadius:'9px',boxShadow:'20px',bgcolor:'#BE3144'}} 
          variant='contained' 
-         color='error'
+        //  sx={{}}
+         
           >
         <span style={{ color: 'white' }}>{label}</span>
         </MainButton>
