@@ -6,7 +6,11 @@ import AddCustomer from './Components/Forms/addCustomer/AddCustomer';
 import { useState,useEffect } from 'react';
 import {useGetustomers} from './hooks/index';
 import ModuleLayout from '@/components/layout/modules/layout';
-import ModalLayout from '@/components/layout/modal/layout'
+import ModalLayout from '@/components/layout/modal/layout';
+import DrawerLayout from '@/components/layout/drawer/drawer';
+// import FormBuilder from '@/components/admin/FormBuilder/FormBuilder';
+// import DynamicForm from './Components/Forms/DynamicForm/DynamicForm';
+// import AddCustomer from './Components/Forms/addCustomer/AddCustomer';
 
 const page =   () => {
   // const customers = await Customer.find();
@@ -16,12 +20,24 @@ const page =   () => {
   const [customerModuleState, setCustomerModuleState] = useState<any>({mode:null});
 
 
+ 
+
+  const handleFormSubmit = (data:any) => {
+    console.log(data);
+    // اینجا می‌تونی داده‌ها رو به MongoDB بفرستی
+  };
 
   useEffect(() => {
-  
+    
+
     console.log(customerModuleState)
   
+  
   }, [customerModuleState])
+  
+
+
+
   
 
 
@@ -36,7 +52,8 @@ const page =   () => {
     switch (mode) {
       case 'add':
         return <>
-        <AddCustomer/>
+        <h1>فرم ثبت مشتری</h1>
+        {/* <DynamicForm  /> */}
         </>
 
         break;
@@ -45,6 +62,9 @@ const page =   () => {
         break;
     }
   }
+
+ 
+ 
 
 
 
@@ -64,6 +84,18 @@ const page =   () => {
               renderModalModuleContent()
               }
             </ModalLayout>
+          }
+
+          {
+            customerModuleState?.drawer && <DrawerLayout  
+            title='مشتری'   
+            open={customerModuleState?.drawer} 
+            setOpen={setCustomerModuleState} 
+            >
+             {
+              <AddCustomer/>
+             }
+              </DrawerLayout>
           }
           <DataGrid rows={data}  />
 

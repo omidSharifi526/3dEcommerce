@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid2';
 import { IconButton } from '@mui/material';
 import { CloseRounded } from '@mui/icons-material';
 import { modalPropFace } from './types';
+import SettingsIcon from '@mui/icons-material/Settings';
 // import { borderRadius } from '@mui/system';
 
 const style = {
@@ -41,6 +42,10 @@ export default function ModalLayout(props:modalPropFace) {
     setOpen((prev:any)=>({...prev,modal:false,mode:null}))
   };
 
+  const initialOpenDrawer=()=>{
+    setOpen((prev:any)=>({...prev,drawer:true}))
+  }
+
   return (
 
       <Modal
@@ -64,9 +69,12 @@ export default function ModalLayout(props:modalPropFace) {
           title
         }
        </Typography>
-     <IconButton onClick={handleClose} size='small' color='error'  >
+       <Box    > 
+
+        <IconButton onClick={handleClose} size='small' color='error'  >
         <CloseRounded/>
-     </IconButton>
+       </IconButton>
+       </Box>
       </Box>
         </Grid>
 

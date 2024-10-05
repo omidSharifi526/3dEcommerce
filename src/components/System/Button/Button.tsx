@@ -7,7 +7,7 @@ const Button = (props:any) => {
     <>
         <MainButton 
         onClick={()=>{
-            onClick((prev:any)=>({...prev,modal:true,mode:'add'}))
+            onClick((prev:any)=>({...prev,drawer:true,mode:'add'}))
         }}
         sx={{borderRadius:'9px',boxShadow:'20px',bgcolor:'#BE3144'}} 
          variant='contained' 
