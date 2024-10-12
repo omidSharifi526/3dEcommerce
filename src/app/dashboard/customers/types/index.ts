@@ -7,8 +7,11 @@
 
 
 export interface customerFace{
-    username: string;
-    email: string;
-    password: string;
-    // id: string;
+  companyName:String,
+  managerName:String,
+  phoneNumber:String,
+  address:String,
+  workBranch:String,
+  userName:String,
+  password:String
 }

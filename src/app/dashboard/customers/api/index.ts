@@ -7,9 +7,28 @@ const  getCustomers=async()=>{
     }
 
     const addCustomer=async(cusBody:customerFace)=>{
-        return await fetch('/api/adminApi/customer',{method:'POST',headers:{ 'Content-Type': 'application/json' },body: JSON.stringify({ ...cusBody, id: uuidv4() })})
+        return await fetch('/api/adminApi/customer',{method:'POST',headers:{ 'Content-Type': 'application/json' },body: JSON.stringify({...cusBody, id: uuidv4(),role:'customer' })})
     }
 
+    const deleteCustomer = async (id: any) => {
+        return await fetch('/api/adminApi/customer', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id }) // باید داده‌ها به صورت JSON ارسال شوند
+        });
+      };
+
+
+      const updateCustomer = async (data:any) => {
+      return  await fetch(`/api/adminApi/customer`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      };
 
 
     // const addCustomer = async (customer: Omit<customerFace, 'id'>) => {
@@ -29,5 +48,7 @@ const  getCustomers=async()=>{
 
 export {
     getCustomers,
-    addCustomer
+    addCustomer,
+    deleteCustomer,
+    updateCustomer
 }

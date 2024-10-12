@@ -4,12 +4,16 @@
 import mongoose from 'mongoose';
 
 const CustomerSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  phonenumber: { type: String,required:true},
-  email: { type: String},
-  password: { type: String, required: true },
+  companyName: { type: String, required: true },
+  managerName: { type: String},
+  phoneNumber: { type: String},
+  address: { type: String },
+  userName:{type:String},
+  password:{type:String},
+  role:{type:String},
   id:{type:String},
-  role:{type:String}
+  email:{type:String},
+  workBranch:{type:String}
 });
   
 

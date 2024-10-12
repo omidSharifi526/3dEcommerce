@@ -10,11 +10,9 @@ export default function moduleLayout(props:any) {
  let{children,addButton,PersianModuleName,englishModuleName,updateModuleState}=props;
 
     return     <Grid container spacing={5}>
-            <Grid size={10} sx={{bgcolor:'#303841',borderRadius:'10px'}}>
+            <Grid size={{xs:6,md:10}} sx={{bgcolor:'#303841',borderRadius:'10px'}}>
             <Grid container >
-                <Grid size={4}  >
-                    
-                </Grid>
+              
            <Grid size={8}>
           <Box sx={{display:'flex',alignItems:'center',justifyContent:'center',px:'25px',width:'100%'}}   >
           <Typography sx={{pt:0.5}} >
@@ -29,7 +27,7 @@ export default function moduleLayout(props:any) {
             </Grid>
             </Grid>
             </Grid>
-            <Grid size={2} >
+            <Grid size={{xs:2}} >
            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}  >
            {
             addButton && <Button 

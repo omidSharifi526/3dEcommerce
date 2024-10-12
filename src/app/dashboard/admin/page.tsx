@@ -29,6 +29,9 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import TrackChangesIcon from '@mui/icons-material/TrackChanges';
+import GroupsIcon from '@mui/icons-material/Groups';
+import EventSeatIcon from '@mui/icons-material/EventSeat';
 
 
 const drawerWidth = 240;
@@ -176,6 +179,11 @@ export default function MiniDrawer({children}:any) {
           {[{label:'دشبورد',url:'/dashboard/overview'},
           {label:'مشتری',url:'/dashboard/customers'},
           {label:'محصولات',url:'/dashboard/products'},
+
+          {label:'اهداف و نتایج',url:'/dashboard/okr'},
+          {label:'ملاقات و مذاکرات',url:'/dashboard/meetings'},
+          {label:'رخداد ها',url:'/dashboard/events'},
+
           {label:'خدمات',url:'/dashboard/services'},
           {label:'تنظیمات',url:'/dashboard/setting'},
           {label:'خروج',url:'/'}
@@ -221,9 +229,14 @@ export default function MiniDrawer({children}:any) {
                   {index === 0 ? <DashboardIcon/>:
                   index===1?<AssignmentIndIcon/>:
                   index===2?<ShoppingBasketIcon/>:
-                  index===3?<HomeRepairServiceIcon/>:
-                  index===4?<SettingsIcon/>:
-                  index===5?<ExitToAppIcon/>:
+
+                  index===3?<TrackChangesIcon/>:
+                  index===4?<GroupsIcon/>:
+                  index===5?<EventSeatIcon/>:
+
+                  index===6?<HomeRepairServiceIcon/>:
+                  index===7?<SettingsIcon/>:
+                  index===8?<ExitToAppIcon/>:
                   ''}
                 </ListItemIcon>
                 <ListItemText
@@ -243,7 +256,7 @@ export default function MiniDrawer({children}:any) {
                 
               </ListItemButton>
                 {
-                  index===3? <Divider />:''
+                  index===2 || index===5  ? <Divider />:''
                 }
             </ListItem>
           ))}

@@ -11,7 +11,7 @@ const FormLayout: React.FC<FormLayoutProps> = ({ title, children }) => {
   return (
     <Grid container flexGrow={1} flexWrap={'wrap'} sx={{ padding: 1, borderRadius: '8px',marginBottom:'30px', boxShadow:4, }}>
 
-    <Grid size={12} py={2} display="flex" alignItems="center" >
+    <Grid size={12} py={1} display="flex" alignItems="center" >
       <Typography variant="caption" component="p" sx={{ px: 3 }}>
         {title}
       </Typography>

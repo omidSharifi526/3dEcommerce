@@ -4,14 +4,16 @@
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid2';
 import { IconButton } from '@mui/material';
 import { CloseRounded } from '@mui/icons-material';
 import { modalPropFace } from './types';
+import Button from '@/components/System/Button/Button';
 import SettingsIcon from '@mui/icons-material/Settings';
+
 // import { borderRadius } from '@mui/system';
 
 const style = {
@@ -57,25 +59,30 @@ export default function ModalLayout(props:modalPropFace) {
         <Grid container sx={{...style,width:width?width:'90%'}}  >
         <Grid size={12} sx={{width:'100%',borderRadius:'12px',p:0.5,mb:2,
           background: 'radial-gradient(circle at left, #BE3144, #3A4750 60%, #303841 100%)',boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}   >
-      <Box sx={{width:'100%',display:'flex',justifyContent:'space-between',
 
-          color: '#fff',}}   >
-       <Typography variant='body2' sx={{p:'5px'}}>
-        {
-          mode==='add'?'  افزودن ': mode==='edit'?'ویرایش':''
-        }
-       
-        {
-          title
-        }
-       </Typography>
-       <Box    > 
+          <Box sx={{width:'100%',display:'flex',justifyContent:'space-between',
 
-        <IconButton onClick={handleClose} size='small' color='error'  >
-        <CloseRounded/>
-       </IconButton>
-       </Box>
-      </Box>
+              color: '#fff',}}   >
+          <Typography variant='body2' sx={{p:'5px'}}>
+            {
+              mode==='add'?'  افزودن ': mode==='edit'?'  ویرایش ' :''
+            }
+          
+            {
+              title
+            }
+          </Typography>
+          <Box    > 
+
+            <IconButton onClick={handleClose} size='small' color='error'  >
+              <CloseRounded/>
+            </IconButton>
+
+
+          </Box>
+          </Box>
+
+
         </Grid>
 
 
@@ -84,6 +91,7 @@ export default function ModalLayout(props:modalPropFace) {
           children
          }
          </Grid>
+
         </Grid>
       </Modal>
    

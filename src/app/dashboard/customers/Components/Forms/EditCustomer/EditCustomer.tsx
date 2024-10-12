@@ -10,13 +10,14 @@ import TextField from '@/components/System/TextField/TextFiled';
 import Grid from '@mui/material/Grid2';
 import DatePickerr from '@/components/System/DatePicker/DatePicker';
 import RegularButton from '@/components/System/RegularButton/RegularButton';
-import { useAddCustomer } from '../../../hooks';
+import { useUpdateCustomer } from '../../../hooks';
 
 
-const AddCustomer = (props:any) => {
-  const{mutate:callAddCustomer,data:addCustomerData,isSuccess}=useAddCustomer();
-  // const mutation = useAddCustomer();
-  let{onCloseForm}=props
+export const EditCustomer = (props:any) => {
+  let{onCloseForm,customerSelected}=props
+const{mutate:callUpdateCustomer,data:updateCustomerData,isSuccess}=useUpdateCustomer()
+
+  
   const initialCloseForm=()=>{
     onCloseForm((prev:any)=>({...prev,modal:false}))
   }
@@ -24,10 +25,11 @@ const AddCustomer = (props:any) => {
 
    
       // استفاده از useForm برای مدیریت فرم
-      const { control,register,handleSubmit, formState: { errors } } = useForm<customerFace>();
+      const { control,register,handleSubmit, formState: { errors } } = useForm<customerFace>({defaultValues:{...customerSelected}});
       const onSubmit: SubmitHandler<customerFace> = (data:customerFace) => {
         console.log(data)
-        callAddCustomer({...data})
+        callUpdateCustomer(data)
+     
       };
 
       useEffect(() => {
@@ -41,14 +43,16 @@ const AddCustomer = (props:any) => {
         
       }
        
-      }, [addCustomerData])
-      
+      }, [updateCustomerData])
 
-   
 
-   
 
-  return <Grid container spacing={1} component={'form'} flexGrow={1} onSubmit={handleSubmit(onSubmit)}  >
+
+
+
+
+  return (
+    <Grid container spacing={1} component={'form'} flexGrow={1} onSubmit={handleSubmit(onSubmit)}  >
   <Grid size={12}  >
   <FormLayout title="اطلاعات رسمی مشتری" key={'t'}>
   <Grid size={{xs:12,sm:2}}  >
@@ -155,9 +159,5 @@ onClick={initialCloseForm}
 
  </Grid>
   </Grid>
-
-  
+  )
 }
-
-
-export default AddCustomer
