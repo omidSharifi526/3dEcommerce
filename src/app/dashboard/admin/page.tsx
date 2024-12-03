@@ -32,7 +32,18 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import GroupsIcon from '@mui/icons-material/Groups';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
-
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import ElectricCarIcon from '@mui/icons-material/ElectricCar';
+import WarehouseIcon from '@mui/icons-material/Warehouse';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import BuildIcon from '@mui/icons-material/Build';
+import AppSettingsAltIcon from '@mui/icons-material/AppSettingsAlt';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import Filter7Icon from '@mui/icons-material/Filter7';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 
 const drawerWidth = 240;
 
@@ -127,7 +138,7 @@ export default function MiniDrawer({children}:any) {
 
 
 
-  const handleDrawerOpen = () => {
+  const  handleDrawerOpen = () => {
     setOpen(true);
   };
 
@@ -179,9 +190,13 @@ export default function MiniDrawer({children}:any) {
           {[{label:'دشبورد',url:'/dashboard/overview'},
           {label:'مشتری',url:'/dashboard/customers'},
           {label:'محصولات',url:'/dashboard/products'},
+          {label:'سفارشات',url:'/dashboard/orders'},
+          {label:'انبار',url:'/dashboard/warehouse'},
+          {label:'گزارشات',url:'/dashboard/reports'},
+          
 
-          {label:'اهداف و نتایج',url:'/dashboard/okr'},
-          {label:'ملاقات و مذاکرات',url:'/dashboard/meetings'},
+          {label:'موجودی',url:'/dashboard/okr'},
+          {label:'حساب دفتری',url:'/dashboard/meetings'},
           {label:'رخداد ها',url:'/dashboard/events'},
 
           {label:'خدمات',url:'/dashboard/services'},
@@ -227,16 +242,18 @@ export default function MiniDrawer({children}:any) {
                   // ExitToAppIcon
                 >
                   {index === 0 ? <DashboardIcon/>:
-                  index===1?<AssignmentIndIcon/>:
-                  index===2?<ShoppingBasketIcon/>:
+                  index===1?<ManageAccountsIcon/>:
+                  index===2?<ElectricCarIcon/>:
+                  index===3?<AppSettingsAltIcon/>:
+                  index===4?<WarehouseIcon/>:
 
-                  index===3?<TrackChangesIcon/>:
-                  index===4?<GroupsIcon/>:
-                  index===5?<EventSeatIcon/>:
+                  index===5?<AssessmentIcon/>:
+                  index===6?<Filter7Icon/>:
+                  index===7?<EditNoteIcon/>:
 
-                  index===6?<HomeRepairServiceIcon/>:
-                  index===7?<SettingsIcon/>:
-                  index===8?<ExitToAppIcon/>:
+                  index===8?<HomeRepairServiceIcon/>:
+                  index===9?<SettingsIcon/>:
+                  index===10?<ExitToAppIcon/>:
                   ''}
                 </ListItemIcon>
                 <ListItemText
@@ -256,7 +273,7 @@ export default function MiniDrawer({children}:any) {
                 
               </ListItemButton>
                 {
-                  index===2 || index===5  ? <Divider />:''
+                  index===3 || index===6  ? <Divider />:''
                 }
             </ListItem>
           ))}

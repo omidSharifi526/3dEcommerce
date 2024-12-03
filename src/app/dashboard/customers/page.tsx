@@ -16,7 +16,7 @@ import AlertDialog from '@/components/System/AlertDialog/AlertDialog';
 import TextField from '@/components/System/TextField/TextFiled';
 
 
-const page =   () => {
+const page =() => {
   const{mutate:deleteCustomer,data:deleteData,isSuccess}=useDeleteCustomer()
   const { data, error, isLoading } = useGetustomers();
   const [customerModuleState, setCustomerModuleState] = useState<any>({mode:null});

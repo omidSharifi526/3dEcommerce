@@ -20,8 +20,7 @@ import { NEWS_API_KEY } from "@/env";
 
 
   const  getNews=async()=>{
-  const query = 'قالب' ; // جستجوی اخبار مرتبط با صنعت چاپ و بسته‌بندی
-
+    const query = 'قالب' ; // جستجوی اخبار مرتبط با صنعت چاپ و بسته‌بندی
     return await  fetch(`https://newsapi.org/v2/everything?q=${query}&apiKey=${NEWS_API_KEY}`).then((res) => res.json());
     }
 
