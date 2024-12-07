@@ -51,16 +51,6 @@ if (isSuccess) {
   }, [customerSelected])
   
 
-
-
-  
-  
-
-
-
-  
-
-
   if (
     isLoading
   ) {
@@ -167,15 +157,7 @@ if (isSuccess) {
 
           }
 
-          {/* {
-            customerModuleState?.drawer && <DrawerLayout  
-            title='مشتری'   
-            open={customerModuleState?.drawer} 
-            setOpen={setCustomerModuleState} 
-            >
-             
-              </DrawerLayout>
-          } */}
+      
           <DataGrid 
           columns={columns  || []} 
           rows={data || []} 

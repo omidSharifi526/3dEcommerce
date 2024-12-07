@@ -22,6 +22,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import Link from 'next/link';
 import {Select,MenuItem} from '@mui/material';
 import ToggleMode from '@/components/System/ToggleMode/ToggleMode';
+import FinancialEventsLogger from '@/components/System/FinancialEventsLogger/FinancialEventsLogger';
 import { usePathname } from 'next/navigation';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
@@ -44,6 +45,16 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Filter7Icon from '@mui/icons-material/Filter7';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import FolderIcon from '@mui/icons-material/Folder';
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import DvrIcon from '@mui/icons-material/Dvr';
+import EdgesensorLowIcon from '@mui/icons-material/EdgesensorLow';
+import PeopleIcon from '@mui/icons-material/People';
+import moment from 'jalali-moment';
+
+
 
 const drawerWidth = 240;
 
@@ -149,11 +160,16 @@ export default function MiniDrawer({children}:any) {
   const handleExit=()=>{
       window.location.href = '/'
   }
+  
+
+// const currentDate = moment().locale('fa').format('dddd، jD jMMMM jYYYY');
+const currentDate = moment().locale("fa").format("jYYYY/jMM/jDD");
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
+
         <Toolbar sx={{width:'100%',display:'flex',justifyContent:'space-between'}}  >
           <IconButton
             color="inherit"
@@ -169,10 +185,19 @@ export default function MiniDrawer({children}:any) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="caption" noWrap component="div">
+          {/* <Typography variant="caption" noWrap component="div">
             ادمین خوش آمدید
-          </Typography>
-          <ToggleMode/>
+          </Typography> */}
+          <Box>
+        <FinancialEventsLogger/>
+            
+          </Box>
+        <Box sx={{display:'flex',alignItems:'center'}}   >
+        <ToggleMode/>
+        <Typography>{currentDate}</Typography>
+
+        </Box>
+
         </Toolbar>
         
        
@@ -184,19 +209,28 @@ export default function MiniDrawer({children}:any) {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
+
+
+
         <Divider />
         <List>
           
           {[{label:'دشبورد',url:'/dashboard/overview'},
-          {label:'مشتری',url:'/dashboard/customers'},
-          {label:'محصولات',url:'/dashboard/products'},
+          {label:'فروش',url:'/dashboard/sales'},
           {label:'سفارشات',url:'/dashboard/orders'},
+          {label:'مشتری',url:'/dashboard/customers'},
+
+          {label:'ویترین',url:'/dashboard/showCase'},
+          {label:'محصولات',url:'/dashboard/products'},
+         
           {label:'انبار',url:'/dashboard/warehouse'},
           {label:'گزارشات',url:'/dashboard/reports'},
           
 
           {label:'موجودی',url:'/dashboard/okr'},
           {label:'حساب دفتری',url:'/dashboard/meetings'},
+          {label:'وفاداری',url:'/dashboard/loyalty'},
+
           {label:'رخداد ها',url:'/dashboard/events'},
 
           {label:'خدمات',url:'/dashboard/services'},
@@ -238,22 +272,27 @@ export default function MiniDrawer({children}:any) {
                           mr: 'auto',
                         },
                   ]}
-
-                  // ExitToAppIcon
                 >
                   {index === 0 ? <DashboardIcon/>:
-                  index===1?<ManageAccountsIcon/>:
-                  index===2?<ElectricCarIcon/>:
-                  index===3?<AppSettingsAltIcon/>:
-                  index===4?<WarehouseIcon/>:
 
-                  index===5?<AssessmentIcon/>:
-                  index===6?<Filter7Icon/>:
-                  index===7?<EditNoteIcon/>:
+                  index===1?<ShoppingCartCheckoutIcon/>:
 
-                  index===8?<HomeRepairServiceIcon/>:
-                  index===9?<SettingsIcon/>:
-                  index===10?<ExitToAppIcon/>:
+                  index===2?<EdgesensorLowIcon/>:
+
+                  index===3?<PeopleIcon/>:
+
+                  index===4?<DvrIcon/>:
+                  index===5?<FolderIcon/>:
+                  index===6?<WarehouseIcon/>:
+
+                  index===7?<AssessmentIcon/>:
+                  index===8?<Filter7Icon/>:
+                  index===9?<EditNoteIcon/>:
+                  index===10?<HandshakeIcon/>:
+
+                  index===11?<HomeRepairServiceIcon/>:
+                  index===12?<SettingsIcon/>:
+                  index===13?<ExitToAppIcon/>:
                   ''}
                 </ListItemIcon>
                 <ListItemText

@@ -15,7 +15,7 @@ export default function moduleLayout(props:any) {
               
            <Grid size={8}>
           <Box sx={{display:'flex',alignItems:'center',justifyContent:'center',px:'25px',width:'100%'}}   >
-          <Typography sx={{pt:0.5}} >
+          <Typography variant="h5" sx={{py:0.8}} >
             {
                 PersianModuleName
             }

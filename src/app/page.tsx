@@ -6,7 +6,9 @@ import Customer from "../model/Customer";
 import Category from "../model/Category";
 import dbConnect from '../dbConnect';
 import Link from 'next/link';
+import Image from "next/image";
 import { Box, Button, Container, Typography } from '@mui/material';
+import Img from './dashboard/Statics/partsImg.jpg'
 export default async function Home() {
   await dbConnect()
   const products = await Product.find();
@@ -37,16 +39,21 @@ export default async function Home() {
          height: '10vh',
          width:'100% !important',
          fontFamily:"iranSans",
+         flexDirection:'column',
          px:'20px'}}
   >
-
-  <Box>
-  <Typography variant="h6" gutterBottom>
-       به فروشگاه آزمایشی ما خوش آمدید
+<Box  sx={{width:'100%',display:'flex',justifyContent:'space-between',p:1}}  >
+  
+<Box>
+  <Typography variant="h6" >
+       به فروشگاه ایران یدک  خوش آمدید
     </Typography>
-  </Box>
+     
+     
+</Box>
     
-    <div style={{ display: 'flex', gap: '20px' }}>
+  <Box>
+  <div style={{ display: 'flex', gap: '20px',padding:10 }}>
       <Link href="auth/login">
         <Button variant="contained" color="primary" size="large">
           ورود
@@ -59,6 +66,13 @@ export default async function Home() {
         </Button>
       </Link>
     </div>
+  </Box>
+</Box>
+    
+
+    <Box sx={{width:'100%',display:'flex',justifyContent:'center'}} >
+      <Image src={Img} alt="t"  />
+    </Box>
 
   </Box>
   );

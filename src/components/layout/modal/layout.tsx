@@ -13,6 +13,7 @@ import { CloseRounded } from '@mui/icons-material';
 import { modalPropFace } from './types';
 import Button from '@/components/System/Button/Button';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { ModuleState } from '@/interfaces';
 
 // import { borderRadius } from '@mui/system';
 
@@ -41,7 +42,7 @@ export default function ModalLayout(props:modalPropFace) {
 
   let{open,setOpen,title,children,mode,width}=props;
   const handleClose = () => {
-    setOpen((prev:any)=>({...prev,modal:false,mode:null}))
+    setOpen((prev:ModuleState)=>({...prev,modal:false,mode:null}))
   };
 
   const initialOpenDrawer=()=>{
